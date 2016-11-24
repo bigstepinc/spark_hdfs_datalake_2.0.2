@@ -37,8 +37,13 @@ if [ "$KEYTAB_PATH" != "" ]; then
 	mv /opt/hadoop/etc/hadoop/core-site.xml.tmp /opt/hadoop/etc/hadoop/core-site.xml
 fi
 if [ "$USER_HOME_DIR" != "" ]; then
-	mkdir -p $USER_HOME_DIR
+	#mkdir -p $USER_HOME_DIR
 	sed "s/USER_HOME_DIR/$USER_HOME_DIR/" /opt/hadoop/etc/hadoop/core-site.xml >> /opt/hadoop/etc/hadoop/core-site.xml.tmp && \
+	mv /opt/hadoop/etc/hadoop/core-site.xml.tmp /opt/hadoop/etc/hadoop/core-site.xml
+fi
+
+if [ "$DATALAKE_NODE" != "" ]; then
+	sed "s/DATALAKE_NODE/$DATALAKE_NODE/" /opt/hadoop/etc/hadoop/core-site.xml >> /opt/hadoop/etc/hadoop/core-site.xml.tmp && \
 	mv /opt/hadoop/etc/hadoop/core-site.xml.tmp /opt/hadoop/etc/hadoop/core-site.xml
 fi
 
