@@ -26,6 +26,11 @@
 </property>
 
 <property>
+<name>fs.dl.impl.defaultEndpoint</name>
+<value>/data_lake/USER_HOME_DIR</value>
+</property>
+
+<property>
 <name>fs.dl.impl.kerberosRealm</name>
 <value>bigstep.io</value>
 </property>
