@@ -2,6 +2,7 @@ FROM mcristinagrosu/bigstep_hdfs_datalake
 
 RUN apk add --update alpine-sdk
 RUN apk add libffi && apk add jq
+RUN apk add libsm && apk add libx11 && apk add libxt && apk add xvfb
 
 
 # Install Spark 2.0.2
@@ -90,7 +91,7 @@ RUN jq --arg v "$CONDA_DIR/envs/python3/bin/python"         '.["env"]["PYSPARK_P
 
 #Install R kernel and set up environment
 RUN $CONDA_DIR/bin/conda config --add channels r
-RUN $CONDA_DIR/bin/conda install --yes -c r r-essentials r-base r-irkernel r-irdisplay r-ggplot2 r-repr r-rcurl
+RUN $CONDA_DIR/bin/conda install --yes -c r r-essentials r-base="3.3.1 1" r-irkernel r-irdisplay r-ggplot2 r-repr r-rcurl
 RUN $CONDA_DIR/bin/conda create --yes  -n ir -c r r-essentials r-base r-irkernel r-irdisplay r-ggplot2 r-repr r-rcurl
 
 RUN mkdir -p /opt/conda/share/jupyter/kernels/scala
