@@ -3,6 +3,7 @@ FROM mcristinagrosu/bigstep_hdfs_datalake
 RUN apk add --update alpine-sdk
 RUN apk add libffi && apk add jq
 RUN apk add libsm && apk add libx11 && apk add libxt && apk add xvfb
+RUN apk add poppler-dev && apk add r-cairo && apk add pango && apk add pango-dev
 
 
 # Install Spark 2.0.2
