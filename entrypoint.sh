@@ -81,6 +81,10 @@ if [ "$SPARK_CONTAINER_DIR" != "" ]; then
     cp /opt/spark-2.0.2-bin-hadoop2.7/jars/datalake-client-libraries-1.4-SNAPSHOT.jar $HADOOP_HOME/share/hadoop/common/
     cp /root/google-collections-1.0.jar /opt/spark-2.0.2-bin-hadoop2.7/jars/
     
+    wget http://central.maven.org/maven2/org/apache/spark/spark-streaming-kafka-assembly_2.10/1.3.0/spark-streaming-kafka-assembly_2.10-1.3.0.jar -P /opt/spark-2.0.2-bin-hadoop2.7/jars/
+    cp /opt/spark-2.0.2-bin-hadoop2.7/jars/spark-streaming-kafka-assembly_2.10-1.3.0.jar $HADOOP_HOME/share/hadoop/common/
+   
+    
     sed "s/#c.NotebookApp.certfile = u.*/c.NotebookApp.certfile = u\'$CERTFILE_PATH\'/" /root/.jupyter/jupyter_notebook_config.py >> /root/.jupyter/jupyter_notebook_config.py.tmp && \
 	mv /root/.jupyter/jupyter_notebook_config.py.tmp /root/.jupyter/jupyter_notebook_config.py
     sed "s/#c.NotebookApp.keyfile = u.*/c.NotebookApp.keyfile = u\'$KEYFILE_PATH\'/" /root/.jupyter/jupyter_notebook_config.py >> /root/.jupyter/jupyter_notebook_config.py.tmp && \
